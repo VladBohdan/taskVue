@@ -39,20 +39,20 @@ export default {
       areOptionsVisible: false
     }
   },
-    methods: {
-      selectOption(option) {
-        this.$emit(event:  'select',option )
-        this.areOptionsVisible = false
-      },
-      hidenSelect() {
-        this.areOptionsVisible = false
-      }
+  methods: {
+    selectOption: function (option) {
+      this.$emit('select', option)
+      this.areOptionsVisible = false
     },
-  mounted() {
-    document.addEventListener('click', this.hidenSelect.bind{this}, true)
+    hidenSelect: function () {
+      this.areOptionsVisible = false
+    }
+  },
+  mounted () {
+    document.addEventListener('click', this.hidenSelect.bind(this), true)
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     document.removeEventListener('click', this.hidenSelect)
   }
 }

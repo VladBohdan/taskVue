@@ -1,13 +1,16 @@
 <template>
-  <h1>solo</h1>
+  <div>
+    <h1>solo</h1>
+    <personalOffice/>
+  </div>
 </template>
 
 <script>
-/*
 import personalOffice from '../components/personalOffice'
-*/
 export default {
-  name: 'personalAccount'
-
+  name: 'personalAccount',
+  components: {
+    personalOffice
+  }
 }
 </script>
