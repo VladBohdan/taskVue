@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>solo</h1>
     <personalOffice/>
   </div>
 </template>

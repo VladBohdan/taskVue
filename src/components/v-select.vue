@@ -70,11 +70,11 @@ export default {
   }
 
   .title {
-      border: solid 1px #aeaeae;
+      border: solid 1px #1D1D1D;
   }
 
   .options {
-    border: solid 1px #aeaeae;
+    border: solid 1px #1D1D1D;
     position: absolute;
     top: 25px;
     right: 0;
@@ -82,6 +82,6 @@ export default {
   }
 
   .options p:hover{
-    background: #e7e7e7;
+    background: #1D1D1D;
   }
 </style>

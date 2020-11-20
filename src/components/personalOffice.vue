@@ -1,37 +1,52 @@
 <template>
   <div class="personalOffice">
     <div class="contactInfo">
-      <img src="../assets/contato.png" height="100" width="100"/>
+      <img src="../assets/contat.png" height="100" width="100"/>
+      <q-btn
+        class="buttonPlus"
+        fab
+        dark
+        color="indigo"
+      >
+        <q-icon dark>
+          +
+        </q-icon>
+      </q-btn>
       <div id="name">
-        <h1>Name</h1>
+        <p>Name</p>
         <button>Изменить пароль</button>
       </div>
       <div id="numberPhone">
-        <h2>number</h2>
+        <p>number</p>
       </div>
       <div id="password">
         <button>изменить пароль</button>
       </div>
     </div>
     <div class="birthday">
-      <q-btn
-        class="mx-2"
-        fab
-        dark
-        color="indigo"
-      >
-        <q-icon dark>
-          mdi-plus
-        </q-icon>
-      </q-btn>
-      <h1>День рождения</h1>
+      <img src="../assets/present.jpg" height="125" width="140"/>
+      <span>День рождения</span>
       <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
+      <div
+        v-for="post in options"
+        v-bind:key="post.months"
+        v-bind:title="post.months"
+      >
+      </div>
+      <select v-model="selected">
+        <option disabled value="">Выберите один из вариантов</option>
+        <option v-for="post in options"
+                v-bind:key="post.months"
+                v-bind:title="post.months"
+                v-bind:value="post.months"
+        >{{post.months}}</option>
+      </select>
+      <span>Выбрано: {{ selected }}</span>
       <vSelect></vSelect>
-      <q-btn color="deep-orange" glossy label="сохранить" />
-      <p> selected option {{selected}}</p>
     </div>
     <div class="bonus">
-      <h5>Ваши бонусы</h5>
+      <progress-bar></progress-bar>
+      <p>Ваши бонусы</p>
       <p>текущий уровень кашбэка: 5% (дуйстувует до 20.12.2020)</p>
       <p>Уровень кэшбэка действует с момента получение и до конца следующего месеца. Например,вы получили новий
         уровень 10 апреля-он будет действовать до конца мая. При сумме заказов за месяц от 4500 рублей, вы получаете
@@ -43,13 +58,14 @@
 
 <script>
 import vSelect from './v-select'
+import ProgressBar from './progressBar'
 export default {
   name: 'personalOffice',
-  components: { vSelect },
-  comments: {
+  components: {
+    ProgressBar,
     vSelect
   },
-  data () {
+  data: function () {
     return {
       options: [
         {
@@ -101,7 +117,7 @@ export default {
           value: 12
         }
       ],
-      selected: 'Select'
+      selected: 'roma'
     }
   },
   methods: {
@@ -110,9 +126,49 @@ export default {
     }
   },
   mounted () {
-    debugger
     console.log('Add more componente mounted.')
   }
 }
 
 </script>
+
+<style>
+.personalOffice{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  margin: 10% 0;
+  min-height: 200px;
+  background-color: rgba(33, 33, 33, .3);
+}
+
+.contactInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  text-align: center;
+  margin: 10% 0;
+  min-height: 200px;
+  background-color: blueviolet;
+  Justify-content: flex-start;
+}
+.birthday {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
+  margin: 10% 0;
+  min-height: 200px;
+  background-color: orange;
+  justify-content: flex-end;
+}
+  .bonus{
+    margin: 10% 0;
+    min-height: 200px;
+    background-color: dodgerblue;
+  }
+</style>

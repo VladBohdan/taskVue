@@ -20,8 +20,7 @@
               <p>Принимаем оплату картами и электронными деньгами</p>
               <img src="../assets/vk.png" height="55" width="90"/>
               <a href="https://vk.com/superdostavka">vk.com/superdostavka</a>
-              <img src="../assets/instagram.jpg"
-                                                                                height="55" width="115"/>
+              <img src="../assets/instagram.jpg" height="55" width="115"/>
               <a href="https://www.instagram.com/superdostavka">@superdostavka</a>
               <img src="../assets/decision-main.png" height="55" width="60" alt=""/>
               <p>работает на системе</p>
@@ -45,6 +44,7 @@ export default {
 </script>
 <style>
   .info{
+
     display: flex;
   }
 </style>
