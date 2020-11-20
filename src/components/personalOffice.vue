@@ -1,7 +1,7 @@
 <template>
   <div class="personalOffice">
     <div class="contactInfo">
-      <img src="../assets/contat.png" height="100" width="100"/>
+      <img src="../assets/contat.png" height="100" width="100" alt=""/>
       <q-btn
         class="buttonPlus"
         fab
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="birthday">
-      <img src="../assets/present.jpg" height="125" width="140"/>
+      <img src="../assets/present.jpg" height="125" width="140" alt=""/>
       <span>День рождения</span>
       <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
       <div
@@ -33,16 +33,19 @@
         v-bind:title="post.months"
       >
       </div>
-      <select v-model="selected">
-        <option disabled value="">Выберите один из вариантов</option>
-        <option v-for="post in options"
-                v-bind:key="post.months"
-                v-bind:title="post.months"
-                v-bind:value="post.months"
-        >{{post.months}}</option>
-      </select>
+      <label>
+        <select v-model="selected">
+          <option disabled value="">Выберите один из вариантов</option>
+          <option v-for="post in options"
+                  v-bind:key="post.months"
+                  v-bind:title="post.months"
+                  v-bind:value="post.months"
+          >{{post.months}}</option>
+        </select>
+      </label>
       <span>Выбрано: {{ selected }}</span>
       <vSelect></vSelect>
+      <select-number></select-number>
     </div>
     <div class="bonus">
       <progress-bar></progress-bar>
@@ -59,9 +62,11 @@
 <script>
 import vSelect from './v-select'
 import ProgressBar from './progressBar'
+import SelectNumber from './selectNunber'
 export default {
   name: 'personalOffice',
   components: {
+    SelectNumber,
     ProgressBar,
     vSelect
   },
@@ -167,7 +172,6 @@ export default {
   justify-content: flex-end;
 }
   .bonus{
-    margin: 10% 0;
     min-height: 200px;
     background-color: dodgerblue;
   }
