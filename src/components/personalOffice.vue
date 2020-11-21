@@ -9,6 +9,7 @@
         fab
         dark
         color="indigo"
+        @click="onSelectImgClicked()"
       >
         <q-icon dark>
           +
@@ -151,6 +152,18 @@ export default {
         .then(data => this.onDataSaved(data))
     },
     onDataSaved: function (data) {
+    },
+    onSelectImgClicked: function () {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ month: this.selected, date: this.selectNumber })
+      }
+      fetch('https://2acfa8f6fcd2e0c69580a08c0fe9d867.m.pipedream.net', requestOptions)
+        .then(response => response.json())
+        .then(data => this.onDataSavedImg(data))
+    },
+    onDataSavedImg: function (data) {
     },
     onDataLoading: function () {
       const options = {
