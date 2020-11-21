@@ -3,7 +3,7 @@
     <p
       @click="areOptionsVisible = !areOptionsVisible"
       class="title"
-    >{{selected}}</p>
+    ></p>
     <div
       class="options"
       v-if="areOptionsVisible"

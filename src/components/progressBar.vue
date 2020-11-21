@@ -13,16 +13,19 @@ export default {
   name: 'progressBar',
   data () {
     return {
-      progress1: 0.1,
-      progress2: 0.9,
-      progress3: 0.2,
-      progress4: 0.2
+      progress1: 0,
+      progress2: 2000,
+      progress3: 3500,
+      progress4: 4500
     }
   },
 
   computed: {
     progressLabel1 () {
-      return (this.progress1 * 100).toFixed(2) + 'р'
+      return (this.progress1) + '₽'
+    },
+    progressLabel2 () {
+      return (this.progress1) + '₽'
     }
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <div class="personalOffice">
-    <div class="contactInfo">
-      <img src="../assets/contat.png" height="100" width="100" alt=""/>
+    <div class="personal-info__wrap">
+    <div class="personal-info__block">
+      <div class="personal-info__image">
+      <img src="../assets/contat.png" height="100" width="100"/>
       <q-btn
         class="buttonPlus"
         fab
@@ -12,40 +14,47 @@
           +
         </q-icon>
       </q-btn>
+     </div>
+      <div class="personal-info__contacts">
       <div id="name">
-        <p>Name</p>
-        <button>Изменить пароль</button>
+        <span>Name</span>
       </div>
       <div id="numberPhone">
-        <p>number</p>
+        <span>number</span>
       </div>
       <div id="password">
         <button>изменить пароль</button>
       </div>
-    </div>
-    <div class="birthday">
-      <img src="../assets/present.jpg" height="125" width="140" alt=""/>
-      <span>День рождения</span>
-      <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
-      <div
-        v-for="post in options"
-        v-bind:key="post.months"
-        v-bind:title="post.months"
-      >
       </div>
-      <label>
-        <select v-model="selected">
-          <option disabled value="">Выберите один из вариантов</option>
-          <option v-for="post in options"
-                  v-bind:key="post.months"
-                  v-bind:title="post.months"
-                  v-bind:value="post.months"
-          >{{post.months}}</option>
-        </select>
-      </label>
-      <span>Выбрано: {{ selected }}</span>
-      <vSelect></vSelect>
-      <select-number></select-number>
+    </div>
+    <div class="personal-info__birthday">
+      <div class="personal-birthday__icon">
+      <img src="../assets/pngegg.png" height="125" width="140"/>
+        <div class="personal-birthday__title">
+      <div class="personal-birthday__content">
+        <span>test</span>
+        <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
+
+        <div class="personal-birthday-select">
+          <select-number></select-number>
+          <div>
+          <select v-model="selected">
+            <option disabled value="">Выберите один из вариантов</option>
+            <option v-for="post in options"
+                    v-bind:key="post.months"
+                    v-bind:title="post.months"
+                    v-bind:value="post.months"
+            >{{post.months}}</option>
+          </select>
+          </div>
+          <div>
+          <q-btn color="deep-orange" glossy label="Coхранить" />
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+     </div>
     </div>
     <div class="bonus">
       <progress-bar></progress-bar>
@@ -56,19 +65,18 @@
         максимальный кашбек - 10%
       </p>
     </div>
+
   </div>
 </template>
 
 <script>
-import vSelect from './v-select'
 import ProgressBar from './progressBar'
-import SelectNumber from './selectNunber'
+import SelectNumber from './selectNumber'
 export default {
   name: 'personalOffice',
   components: {
     SelectNumber,
-    ProgressBar,
-    vSelect
+    ProgressBar
   },
   data: function () {
     return {
@@ -138,25 +146,8 @@ export default {
 </script>
 
 <style>
-.personalOffice{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-  margin: 10% 0;
-  min-height: 200px;
-  background-color: rgba(33, 33, 33, .3);
-}
 
 .contactInfo {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 30%;
-  text-align: center;
-  margin: 10% 0;
-  min-height: 200px;
   background-color: blueviolet;
   Justify-content: flex-start;
 }
@@ -166,13 +157,11 @@ export default {
   flex-direction: column;
   width: 50%;
   text-align: center;
-  margin: 10% 0;
-  min-height: 200px;
   background-color: orange;
-  justify-content: flex-end;
 }
   .bonus{
     min-height: 200px;
     background-color: dodgerblue;
+    justify-content: flex-end;
   }
 </style>

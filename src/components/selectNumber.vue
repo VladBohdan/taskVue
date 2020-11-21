@@ -1,42 +1,33 @@
 <template>
-  <div id="q-app">
-    <div class="q-pa-md" style="max-width: 300px">
-      <div class="q-gutter-md">
-        <q-select v-model="model" :options="options" label="" value="2"></q-select>
-      </div>
+  <div id="selectNumber">
       <label>
-        <div
-          v-for="post in options"
-          v-bind:key="post.number"
-          v-bind:number="post.number"
-        >
-        </div>
-        <select v-model="selected">
-          <option disabled value="">Выберите один из вариантов</option>
-          <option v-for="post in options"
-                  v-bind:key="post.number"
-                  v-bind:title="post.number"
-                  v-bind:value="post.number"
-          ></option>
-        </select>
       </label>
-      <div
-        class="options"
-      >
-        <p
-          v-for="option in options"
-          :key="option.value"
-          @click="selectOptionNumber(option)"
+      <select>
+        <option
+          v-for="optionNumber in options"
+          :key="optionNumber.value"
+          @click="selectOptionNumber(optionNumber)"
         >
-        </p>
-      </div>
-    </div>
-    <span>Выбрано: {{ selected }}</span>
-    </div>
+          {{optionNumber.name}}
+        </option>
+      </select>
+  </div>
 </template>
 <script>
 export default {
   name: 'selectNumber',
+  props: {
+    optionsNumber: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    selected: {
+      type: Number,
+      default: 1
+    }
+  },
   data () {
     return {
       model: null,
@@ -166,12 +157,12 @@ export default {
           value: 31
         }
       ],
-      selected: '1'
+      selectedNumber: '1'
     }
   },
   methods: {
-    selectOption: function (option) {
-      this.selected = option.name
+    selectOptionNumber: function (optionNumber) {
+      this.selectedNumber = optionNumber.name
     }
   }
 }

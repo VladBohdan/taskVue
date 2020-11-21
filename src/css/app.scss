@@ -1,8 +1,123 @@
 // app global css in SCSS form
+$header-height: 50px;
+$container-width: 1200px;
+
+
+// general mixins
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -moz-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+
+// end general mixins
+.personalOffice{
+  width: 100%;
+  margin-top: $header-height;
+  max-width: $container-width;
+  margin-right: auto;
+  margin-left: auto;
+
+  .personal-info__wrap {
+    width: 100%;
+    padding-top:$header-height;
+    @include flexbox();
+    @include justify-content(space-between);
+  }
+}
+
+.personal-info__block {
+  @include flexbox();
+
+  .personal-info__image {
+    position: relative;
+  }
+  // завтра помыняти
+
+  button.q-btn.q-btn-item.non-selectable.no-outline.buttonPlus.q-btn--standard.q-btn--rectangle.q-btn--rounded.bg-indigo.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--fab.q-btn--wrap{
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  img {
+    opacity: 0.45;
+    max-width: 75px;
+    height: auto;
+  }
+}
+
+.personal-info__birthday {
+
+  .personal-birthday-select {
+    @include flexbox();
+    @include align-items(center);
+
+    & > div {
+      margin-right: 10px;
+    }
+  }
+
+  .personal-birthday__icon {
+    @include flexbox();
+    @include align-items(center);
+    margin-bottom: 15px;
+
+    img {
+    display: block;
+    margin-right: 10px;
+    opacity: 0.45;
+    max-width: 30px;
+    height: 100%;
+    align-self: flex-start;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
 .footer {
   position:fixed;
   left:0;
   bottom:0;
   height:300px;
   width:100%;
+}
+
+
+.q-pa-md {
+   padding: 0;
 }
