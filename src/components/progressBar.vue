@@ -1,10 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <q-linear-progress size="25px" :value="progress1" color="primary">
-      <div class="absolute-full flex flex-center">
-        <q-badge color="white" text-color="accent" :label="progressLabel1" />
-      </div>
-    </q-linear-progress>
+  <div class="progressBar">
+    <progress :value="value" :max="max" show-progress animated></progress>
+    <span>{{value}}</span>
   </div>
 </template>
 
@@ -12,21 +9,37 @@
 export default {
   name: 'progressBar',
   data () {
+    const val = 700
+    // this.value = (val * 100) / 4500
+
+    debugger
     return {
-      progress1: 0,
-      progress2: 2000,
-      progress3: 3500,
-      progress4: 4500
+      min: 0,
+      value: val,
+      max: 4500
     }
   },
-
-  computed: {
-    progressLabel1 () {
-      return (this.progress1) + '₽'
-    },
-    progressLabel2 () {
-      return (this.progress1) + '₽'
+  methods: {
+    randomValue (value) {
+      // let oneProcentStep = 1000
+      // const a = ((value * 100) / 4500) / 10
+      if (value > 2000 && value < 3500) {
+        // oneProcentStep = 750
+        this.min = 5
+        this.max = 10
+      } else if (value > 3500 && value < 4500) {
+        // oneProcentStep = 500
+        this.min = 7
+        this.max = 10
+        this.value = ((value * 100) / 4500) / 10
+      }
     }
   }
 }
 </script>
+<style>
+  progress{
+    width: 100%
+
+  }
+</style>

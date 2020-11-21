@@ -1,32 +1,62 @@
 <template>
-  <div class="q-pa-md q-gutter-sm">
-    <q-btn label="Fixed size" color="primary" @click="fixed = true" />
-    <q-dialog v-model="fixed">
-      <q-card>
-        <q-separator />
-
-        <q-card-section style="max-height: 50vh" class="scroll">
-          <p>По какoй-то причине вам будет полезно загрузить свое фото в профиль</p>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions align="right">
-          <q-btn flat label="X" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-  </div>
+  <form>
+    <div id="anim">
+      <span class="tooltip" data-tooltip="По какой-то причине вам будет полезно загрузить свое фото в профиль"
+      >
+      </span>
+    </div>
+  </form>
 </template>
 
 <script>
 export default {
-  name: 'modalWindow',
-  data () {
-    return {
-      basic: false,
-      fixed: false
-    }
-  }
+  name: 'progressBar'
 }
 </script>
+<style>
+  .tooltip {
+    background: #9C27B0;
+    position: relative;
+    padding: 5px 12px;
+    margin: 5px;
+    font-size: 15px;
+    border-radius: 100%;
+    color: #FFF;
+  }
+
+  .tooltip:before,
+  .tooltip:after {
+    background: #31CCEC;
+    position: absolute;
+    content: '';
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .tooltip:before {
+    border-width: 10px 8px 0 8px;
+    border-style: solid;
+    top: -15px;
+    transform: translateY(20px);
+  }
+
+  .tooltip:after {
+    content: attr(data-tooltip);
+    width: 160px;
+    height: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    top: -75px;
+    left: -10px;
+    padding: 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transform: translateY(20px);
+  }
+
+  .tooltip:hover::before,
+  .tooltip:hover::after {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+</style>
