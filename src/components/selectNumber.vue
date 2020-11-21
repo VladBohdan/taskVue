@@ -2,11 +2,11 @@
   <div id="selectNumber">
       <label>
       </label>
-      <select>
+      <select @change="selectOptionNumber($event)">
         <option
+          :value="optionNumber.value"
           v-for="optionNumber in options"
           :key="optionNumber.value"
-          @click="selectOptionNumber(optionNumber)"
         >
           {{optionNumber.name}}
         </option>
@@ -157,12 +157,13 @@ export default {
           value: 31
         }
       ],
-      selectedNumber: '1'
+      selectedNumber: ''
     }
   },
   methods: {
-    selectOptionNumber: function (optionNumber) {
-      this.selectedNumber = optionNumber.name
+    selectOptionNumber: function (event) {
+      this.selectedNumber = event.target.value
+      this.$emit('clicked', this.selectedNumber)
     }
   }
 }

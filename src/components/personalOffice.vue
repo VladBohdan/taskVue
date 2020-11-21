@@ -17,10 +17,10 @@
      </div>
       <div class="personal-info__contacts">
       <div id="name">
-        <span>Name</span>
+        <span>{{name}}</span>
       </div>
       <div id="numberPhone">
-        <span>number</span>
+        <span>{{number}}</span>
       </div>
       <div id="password">
         <button>изменить пароль</button>
@@ -36,7 +36,7 @@
         <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
 
         <div class="personal-birthday-select">
-          <select-number></select-number>
+          <select-number @clicked="onSelectNumberClicked"></select-number>
           <div>
           <select v-model="selected">
             <option disabled value="">Выберите один из вариантов</option>
@@ -48,7 +48,7 @@
           </select>
           </div>
           <div>
-          <q-btn color="deep-orange" glossy label="Coхранить" />
+          <q-btn color="deep-orange" @click="onSaveButtonClick()" glossy label="Coхранить" />
           </div>
         </div>
       </div>
@@ -130,17 +130,48 @@ export default {
           value: 12
         }
       ],
-      selected: 'roma'
+      selected: '',
+      selectNumber: 0,
+      name: '',
+      number: ''
     }
   },
   methods: {
-    selectOption: function (option) {
-      this.selected = option.name
+    onSelectNumberClicked: function (value) {
+      this.selectNumber = value
+    },
+    onSaveButtonClick: function () {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ month: this.selected, date: this.selectNumber })
+      }
+      fetch('https://2acfa8f6fcd2e0c69580a08c0fe9d867.m.pipedream.net', requestOptions)
+        .then(response => response.json())
+        .then(data => this.onDataSaved(data))
+    },
+    onDataSaved: function (data) {
+    },
+    onDataLoading: function () {
+      const options = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      }
+      fetch('https://2acfa8f6fcd2e0c69580a08c0fe9d867.m.pipedream.net', options)
+        .then(resp => resp.json())
+        .then(this.onDataLoaded)
+    },
+    onDataLoaded: function (data) {
+      if (data.success) {
+        this.name = 'Vlad'
+        this.number = '+3809609313337'
+      }
     }
   },
   mounted () {
-    console.log('Add more componente mounted.')
+    this.onDataLoading()
   }
+
 }
 
 </script>
