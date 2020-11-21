@@ -9,12 +9,13 @@
         fab
         dark
         color="indigo"
-        @click="onSelectImgClicked()"
+        @click="onEditImgClicked()"
       >
         <q-icon dark>
           +
         </q-icon>
       </q-btn>
+        <modal-window></modal-window>
      </div>
       <div class="personal-info__contacts">
       <div id="name">
@@ -24,7 +25,10 @@
         <span>{{number}}</span>
       </div>
       <div id="password">
-        <button>изменить пароль</button>
+        <button
+          @click="onEditPasswordSelect()"
+        >
+          изменить пароль</button>
       </div>
       </div>
     </div>
@@ -73,9 +77,11 @@
 <script>
 import ProgressBar from './progressBar'
 import SelectNumber from './selectNumber'
+import ModalWindow from './modalWindow'
 export default {
   name: 'personalOffice',
   components: {
+    ModalWindow,
     SelectNumber,
     ProgressBar
   },
@@ -153,7 +159,17 @@ export default {
     },
     onDataSaved: function (data) {
     },
-    onSelectImgClicked: function () {
+    onEditImgClicked: function () {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ month: this.selected, date: this.selectNumber })
+      }
+      fetch('https://2acfa8f6fcd2e0c69580a08c0fe9d867.m.pipedream.net', requestOptions)
+        .then(response => response.json())
+        .then(data => this.onDataSavedImg(data))
+    },
+    onEditPasswordSelect: function () {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -190,19 +206,6 @@ export default {
 </script>
 
 <style>
-
-.contactInfo {
-  background-color: blueviolet;
-  Justify-content: flex-start;
-}
-.birthday {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  text-align: center;
-  background-color: orange;
-}
   .bonus{
     min-height: 200px;
     background-color: dodgerblue;

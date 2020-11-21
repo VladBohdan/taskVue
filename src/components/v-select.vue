@@ -57,31 +57,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .v-select {
-    position: relative;
-    width: 200px;
-    cursor: pointer;
-  }
-
-  .v-select p {
-    margin: 0;
-  }
-
-  .title {
-      border: solid 1px #1D1D1D;
-  }
-
-  .options {
-    border: solid 1px #1D1D1D;
-    position: absolute;
-    top: 25px;
-    right: 0;
-    width: 100%;
-  }
-
-  .options p:hover{
-    background: #1D1D1D;
-  }
-</style>
