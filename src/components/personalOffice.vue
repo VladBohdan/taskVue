@@ -2,81 +2,81 @@
   <div class="personalOffice">
     <div class="personal-info__wrap">
     <div class="personal-info__block">
-      <div class="personal-info__image">
-      <img src="../assets/contat.png" height="100" width="100"/>
-      <q-btn
-        class="buttonPlus"
-        fab
-        dark
-        color="indigo"
-        @click="onEditImgClickedOne()"
-      >
-        <q-icon dark class="buttonImgEdit">
-          +
-        </q-icon>
-      </q-btn>
-        <modal-window></modal-window>
-     </div>
-      <div class="personal-info__contacts">
-      <div id="name">
-        <strong>{{name}}</strong>
-        <!--<div class="personal-contact__editButton">
-          <q-btn
-          class="personal-contact__buttonEdit"
+      <div class="personal-info__image personal-info__tooltip-wrapper">
+        <img class="personal-info__image_contact" src="../assets/contat.png" />
+        <q-btn
+          class="buttonPlus"
           fab
           dark
           color="indigo"
-          @click="onEditImgClickedTwo()"
+          @click="onEditImgClickedOne()"
         >
+          <q-icon dark class="buttonImgEdit">
+            +
+          </q-icon>
         </q-btn>
-        </div>-->
+        <tooltip class="personal-info__tooltip" :title="title"
+        >
+        </tooltip>
       </div>
-      <div id="numberPhone">
-        <span>{{number}}</span>
-      </div>
-      <div id="password">
+      <div class="personal-info__contacts">
+        <div id="name">
+          <strong>{{name}}</strong>
+          <div class="personal-contact__editButton">
+            <q-btn
+            class="personal-contact__buttonEdit"
+            fab
+            dark
+            color="indigo"
+            @click="onEditImgClickedTwo()">
+            </q-btn>
+          </div>
+        </div>
+        <div id="numberPhone">
+          <span>{{number}}</span>
+        </div>
+        <div id="password">
         <button
           class="personal-password__button"
-          @click="onEditPasswordSelect()"
-        >
-          <p>изменить пароль</p></button>
+          @click="onEditPasswordSelect()">
+          <p>изменить пароль</p>
+        </button>
       </div>
       </div>
     </div>
     <div class="personal-info__birthday">
       <div class="personal-birthday__icon">
-      <img src="../assets/pngegg.png" height="125" width="140"/>
-        <div class="personal-birthday__titleOne">
-      <div class="personal-birthday__content">
-        <strong class="personal-birthday__titleTwo">День рождения</strong>
-        <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
-
-        <div class="personal-birthday-select">
-          <select-number class="personal-select__number" @clicked="onSelectNumberClicked"></select-number>
+        <img class="personal-info__icon-birthday" src="../assets/pngegg.png" />
+          <div class="personal-birthday__titleOne">
+        <div class="personal-birthday__content">
+            <strong class="personal-birthday__titleTwo">День рождения</strong>
+            <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
+          <div class="personal-birthday-select">
+            <select-number class="personal-select__number" @clicked="onSelectNumberClicked"></select-number>
+            <div>
+              <select class="personal-select__months" v-model="selected">
+              <option  class="personal-select__title" disabled value="">Выберите месяц</option>
+                <option
+                class="personal-select__number"
+                v-for="post in options"
+                     v-bind:key="post.months"
+                     v-bind:title="post.months"
+                     v-bind:value="post.months"
+               >{{post.months}}</option>
+              </select>
+            </div>
           <div>
-          <select class="personal-select__months" v-model="selected">
-            <option  class="personal-select__title" disabled value="">Выберите месяц</option>
-            <option
-              class="personal-select__number"
-              v-for="post in options"
-                    v-bind:key="post.months"
-                    v-bind:title="post.months"
-                    v-bind:value="post.months"
-            >{{post.months}}</option>
-          </select>
-          </div>
-          <div>
-          <q-btn id="personal-birthday-button" color="deep-orange" @click="onSaveButtonClick()" glossy
-                 label="Coхранить" />
+            <q-btn id="personal-birthday-button" color="deep-orange" @click="onSaveButtonClick()" glossy
+             label="Coхранить" />
           </div>
         </div>
-      </div>
+       </div>
         </div>
       </div>
      </div>
     </div>
     <div class="personal-info__bonus">
-      <progress-bar></progress-bar>
+      <progress-bar :bonuses="bonuses" :current-price="currentPrice"></progress-bar>
       <strong class="personal-bonus__titleOne">Текущий уровень кашбэка: 5% (дуйстувует до 20.12.2020)
       </strong>
       <p
@@ -94,11 +94,11 @@
 <script>
 import ProgressBar from './progressBar'
 import SelectNumber from './selectNumber'
-import ModalWindow from './modalWindow'
+import Tooltip from './tooltip'
 export default {
   name: 'personalOffice',
   components: {
-    ModalWindow,
+    Tooltip,
     SelectNumber,
     ProgressBar
   },
@@ -154,10 +154,30 @@ export default {
           value: 12
         }
       ],
-      selected: '',
+      selected: '5',
       selectNumber: 0,
       name: '',
-      number: ''
+      number: '',
+      title: 'По какой-то причине вам будет полезно загрузить фото',
+      currentPrice: 2340,
+      bonuses: [
+        {
+          price: 0,
+          percentage: 3
+        },
+        {
+          price: 2000,
+          percentage: 5
+        },
+        {
+          price: 3500,
+          percentage: 7
+        },
+        {
+          price: 4500,
+          percentage: 10
+        }
+      ]
     }
   },
   methods: {

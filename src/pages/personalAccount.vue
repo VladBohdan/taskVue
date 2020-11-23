@@ -1,8 +1,5 @@
 <template>
   <div class="personalAccount">
-<!--
-    <router-view></router-view>
--->
     <personalOffice></personalOffice>
   </div>
 </template>

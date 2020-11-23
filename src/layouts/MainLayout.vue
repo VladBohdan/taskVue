@@ -7,7 +7,7 @@
           <q-toolbar-title class="MainLayout-header__title">Личный кабинет</q-toolbar-title>
         </q-toolbar>
       </q-header>
-      <personalAccount />
+      <router-view></router-view>
       <q-footer elevated class="MainLayout-footer">
         <q-toolbar class="glossy MainLayout-footer__toolbar">
           <q-toolbar-title class="glossy MainLayout-footer__titleToolbar">
@@ -34,11 +34,9 @@
   </div>
 </template>
 <script>
-import personalAccount from '../pages/personalAccount'
 export default {
   name: 'MainLayout',
   components: {
-    personalAccount
   }
 }
 </script>
