@@ -1,18 +1,19 @@
 <template>
   <div class="progressBar">
-    <progress :value="value" :max="max" show-progress animated></progress>
-    <span>{{value}}</span>
+    <strong class="progressBar-titleOne">Ваши бонусы</strong>
+    <b class="progressBar-bonus">x{{value}}</b>
+    <progress class="progressBar-progress" :value="value" :max="max" show-progress animated></progress>
+    <p class="progressBar-titleTwo">Сума заказов в Июне 2340 ₽</p>
   </div>
+
 </template>
 
 <script>
 export default {
   name: 'progressBar',
   data () {
-    const val = 700
+    const val = 1226
     // this.value = (val * 100) / 4500
-
-    debugger
     return {
       min: 0,
       value: val,

@@ -9,9 +9,9 @@
         fab
         dark
         color="indigo"
-        @click="onEditImgClicked()"
+        @click="onEditImgClickedOne()"
       >
-        <q-icon dark>
+        <q-icon dark class="buttonImgEdit">
           +
         </q-icon>
       </q-btn>
@@ -19,33 +19,46 @@
      </div>
       <div class="personal-info__contacts">
       <div id="name">
-        <span>{{name}}</span>
+        <strong>{{name}}</strong>
+        <!--<div class="personal-contact__editButton">
+          <q-btn
+          class="personal-contact__buttonEdit"
+          fab
+          dark
+          color="indigo"
+          @click="onEditImgClickedTwo()"
+        >
+        </q-btn>
+        </div>-->
       </div>
       <div id="numberPhone">
         <span>{{number}}</span>
       </div>
       <div id="password">
         <button
+          class="personal-password__button"
           @click="onEditPasswordSelect()"
         >
-          изменить пароль</button>
+          <p>изменить пароль</p></button>
       </div>
       </div>
     </div>
     <div class="personal-info__birthday">
       <div class="personal-birthday__icon">
       <img src="../assets/pngegg.png" height="125" width="140"/>
-        <div class="personal-birthday__title">
+        <div class="personal-birthday__titleOne">
       <div class="personal-birthday__content">
-        <span>test</span>
+        <strong class="personal-birthday__titleTwo">День рождения</strong>
         <p>Укажите дату рождения, и получите «Калифорнию» в подарок за два дня до и неделю после</p>
 
         <div class="personal-birthday-select">
-          <select-number @clicked="onSelectNumberClicked"></select-number>
+          <select-number class="personal-select__number" @clicked="onSelectNumberClicked"></select-number>
           <div>
-          <select v-model="selected">
-            <option disabled value="">Выберите один из вариантов</option>
-            <option v-for="post in options"
+          <select class="personal-select__months" v-model="selected">
+            <option  class="personal-select__title" disabled value="">Выберите месяц</option>
+            <option
+              class="personal-select__number"
+              v-for="post in options"
                     v-bind:key="post.months"
                     v-bind:title="post.months"
                     v-bind:value="post.months"
@@ -53,7 +66,8 @@
           </select>
           </div>
           <div>
-          <q-btn color="deep-orange" @click="onSaveButtonClick()" glossy label="Coхранить" />
+          <q-btn id="personal-birthday-button" color="deep-orange" @click="onSaveButtonClick()" glossy
+                 label="Coхранить" />
           </div>
         </div>
       </div>
@@ -61,11 +75,14 @@
       </div>
      </div>
     </div>
-    <div class="bonus">
+    <div class="personal-info__bonus">
       <progress-bar></progress-bar>
-      <p>Ваши бонусы</p>
-      <p>текущий уровень кашбэка: 5% (дуйстувует до 20.12.2020)</p>
-      <p>Уровень кэшбэка действует с момента получение и до конца следующего месеца. Например,вы получили новий
+      <strong class="personal-bonus__titleOne">Текущий уровень кашбэка: 5% (дуйстувует до 20.12.2020)
+      </strong>
+      <p
+        class="personal-bonus__titleTwo"
+        style="padding-top: 25px">Уровень кэшбэка действует с момента получение и до конца следующего месеца.
+        Например,вы получили новий
         уровень 10 апреля-он будет действовать до конца мая. При сумме заказов за месяц от 4500 рублей, вы получаете
         максимальный кашбек - 10%
       </p>
@@ -159,7 +176,17 @@ export default {
     },
     onDataSaved: function (data) {
     },
-    onEditImgClicked: function () {
+    onEditImgClickedOne: function () {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ month: this.selected, date: this.selectNumber })
+      }
+      fetch('https://2acfa8f6fcd2e0c69580a08c0fe9d867.m.pipedream.net', requestOptions)
+        .then(response => response.json())
+        .then(data => this.onDataSavedImg(data))
+    },
+    onEditImgClickedTwo: function () {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -193,7 +220,7 @@ export default {
     onDataLoaded: function (data) {
       if (data.success) {
         this.name = 'Vlad'
-        this.number = '+3809609313337'
+        this.number = '+380 960 931 337'
       }
     }
   },
@@ -204,11 +231,3 @@ export default {
 }
 
 </script>
-
-<style>
-  .bonus{
-    min-height: 200px;
-    background-color: dodgerblue;
-    justify-content: flex-end;
-  }
-</style>

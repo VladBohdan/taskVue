@@ -1,7 +1,8 @@
 <template>
-  <form>
-    <div id="anim">
-      <span class="tooltip" data-tooltip="По какой-то причине вам будет полезно загрузить свое фото в профиль"
+  <form class="modalWindow">
+    <div id="anim" class="modalWindow-info__block">
+      <span  class="modalWindow-block__title"
+             data-tooltip="По какой-то причине вам будет полезно загрузить свое фото в профиль"
       >
       </span>
     </div>
@@ -14,33 +15,35 @@ export default {
 }
 </script>
 <style>
-  .tooltip {
-    background: #9C27B0;
+  .modalWindow-block__title {
     position: relative;
-    padding: 5px 12px;
+    padding: 23px 30px;
     margin: 5px;
     font-size: 15px;
     border-radius: 100%;
-    color: #FFF;
+    color: #1D1D1D;
+    top: -55px;
+    left: 2px;
+
   }
 
-  .tooltip:before,
-  .tooltip:after {
-    background: #31CCEC;
+  .modalWindow-block__title:before,
+  .modalWindow-block__title:after {
+    background: #ffffff;
     position: absolute;
     content: '';
     opacity: 0;
     transition: all 0.4s ease;
   }
 
-  .tooltip:before {
+  .modalWindow-block__title:before {
     border-width: 10px 8px 0 8px;
     border-style: solid;
     top: -15px;
     transform: translateY(20px);
   }
 
-  .tooltip:after {
+  .modalWindow-block__title:after {
     content: attr(data-tooltip);
     width: 160px;
     height: 40px;
@@ -51,11 +54,11 @@ export default {
     padding: 10px;
     border-radius: 5px;
     letter-spacing: 1px;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
 
-  .tooltip:hover::before,
-  .tooltip:hover::after {
+  .modalWindow-block__title:hover::before,
+  .modalWindow-block__title:hover::after {
     opacity: 1;
     transform: translateY(-2px);
   }

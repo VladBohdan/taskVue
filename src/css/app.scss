@@ -41,7 +41,7 @@ $container-width: 1200px;
 
 
 // end general mixins
-.personalOffice{
+.personalOffice {
   width: 100%;
   margin-top: $header-height;
   max-width: $container-width;
@@ -50,74 +50,230 @@ $container-width: 1200px;
 
   .personal-info__wrap {
     width: 100%;
-    padding-top:$header-height;
+    padding-top: $header-height;
     @include flexbox();
     @include justify-content(space-between);
   }
-}
 
-.personal-info__block {
-  @include flexbox();
-
-  .personal-info__image {
-    position: relative;
+  .personal-password__button {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: pointer;
+    box-sizing: border-box;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 0;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(255, 255, 255), rgb(255, 255, 255)) !important;
+    border-image: initial;
+    margin: 10px 0 0;
+    text-decoration: underline;
+    background-color: white;
+    color: #31CCEC;
+    font-size: 115%;
   }
-  // завтра помыняти
 
-  button.q-btn.q-btn-item.non-selectable.no-outline.buttonPlus.q-btn--standard.q-btn--rectangle.q-btn--rounded.bg-indigo.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--fab.q-btn--wrap{
-    position: absolute;
-    right: 0;
-    width: 20px;
-    height: 20px;
+  .MainLayout {
+    padding: 0;
   }
 
-  img {
-    opacity: 0.45;
-    max-width: 75px;
-    height: auto;
-  }
-}
-
-.personal-info__birthday {
-
-  .personal-birthday-select {
+  .personal-info__block {
     @include flexbox();
-    @include align-items(center);
 
-    & > div {
-      margin-right: 10px;
+    .personal-info__image {
+      position: relative;
+
+
+      .buttonImgEdit{
+        top: -18px;
+        margin-right: 40px;
+        color: #ef6839;
     }
-  }
+    }
 
-  .personal-birthday__icon {
-    @include flexbox();
-    @include align-items(center);
-    margin-bottom: 15px;
+    // завтра помыняти
+
+    button.q-btn.q-btn-item.non-selectable.no-outline.buttonPlus.q-btn--standard.q-btn--rectangle.q-btn--rounded.bg-indigo.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--fab.q-btn--wrap {
+      position: absolute;
+      right: 0;
+      width: 20px;
+      height: 20px;
+    }
+
+    .personal-contact__buttonEdit {
+      q-btn.q-btn-item.non-selectable.no-outline.buttonPlus.q-btn--standard.q-btn--rectangle.q-btn--rounded.bg-indigo.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--fab.q-btn--wrap {
+        position: absolute;
+        right: 0;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .personal-contact__editButton{
+      margin-left: 25px;
+    }
 
     img {
-    display: block;
-    margin-right: 10px;
-    opacity: 0.45;
-    max-width: 30px;
-    height: 100%;
-    align-self: flex-start;
-    }
-
-    p {
-      margin: 0;
+      opacity: 0.45;
+      max-width: 75px;
+      height: auto;
     }
   }
+
+  .personal-info__birthday {
+
+    .personal-birthday-select {
+      @include flexbox();
+      @include align-items(center);
+
+      & > div {
+        margin-right: 10px;
+      }
+    }
+
+    #personal-birthday-button {
+      width: 200px !important;
+      height: 40px;
+    }
+
+    .personal-birthday__icon {
+      @include flexbox();
+      @include align-items(center);
+      margin-bottom: 15px;
+
+      img {
+        display: block;
+        margin-right: 10px;
+        opacity: 0.45;
+        max-width: 30px;
+        height: 100%;
+        align-self: flex-start;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .buttonPlus {
+      background: #1D1D1D;
+      border: 2px solid #e34761; /* Параметры рамки */
+      font-size: 14px; /* Размер текста */
+      padding: 5px 20px; /* Поля вокруг текста */
+    }
+  }
+
+  .personal-select__months {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    cursor: pointer;
+    margin: 0;
+    font: 400 13.3333px Arial;
+    border-radius: 0;
+    border-width: 0;
+    border-style: solid;
+    border-image: initial;
+    border-color: #ffffff;
+  }
+
+  .selectNumber-select {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    cursor: pointer;
+    margin: 0;
+    font: 400 13.3333px Arial;
+    border-radius: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-image: initial;
+  }
+
+  .progressBar {
+    padding-left: 10px;
+
+  .progressBar-progress{
+    width: 100%;
+  }
+
+  .progressBar-bonus {
+    padding-bottom: 20px;
+  }
+
+  .personal-bonus__titleOne {
+    padding-left: 10px;
+    padding-bottom: 50px;
+  }
+    .personal-bonus__titleTwo{
+      padding-top: 25px;
+    }
+
+  .progressBar-titleTwo {
+    padding-top: 15px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+  .MainLayout-footer{
+    width: 100%;
+    padding-top:$header-height;
+    @include flexbox();
+    @include justify-content(space-between);
+    .p{
+      font-size: 60%;
+    }
+  }
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 300px;
+    width: 100%;
+  }
+
+  .q-pa-md {
+    padding: 0;
+  }
 }
-
-.footer {
-  position:fixed;
-  left:0;
-  bottom:0;
-  height:300px;
-  width:100%;
+.personal-info__bonus{
+  width: 100%;
+  padding-top:$header-height;
+  @include flexbox();
+  @include justify-content(space-between);
+  flex-direction: column;
 }
-
-
-.q-pa-md {
-   padding: 0;
+.progressBar{
+  @include flexbox();
+  flex-direction: column;
 }

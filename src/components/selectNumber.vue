@@ -1,9 +1,9 @@
 <template>
-  <div id="selectNumber">
-      <label>
+  <div  class="selectNumber">
+      <label class="selectNumber-label">
       </label>
-      <select @change="selectOptionNumber($event)">
-        <option
+      <select  class="selectNumber-select" @change="selectOptionNumber($event)">
+        <option class="selectNumber-select__option"
           :value="optionNumber.value"
           v-for="optionNumber in options"
           :key="optionNumber.value"
