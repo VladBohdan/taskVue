@@ -3,7 +3,7 @@
     <q-layout view="lHh lpr lFf" class="shadow-2 rounded-borders MainLayout-info__layout">
       <q-header elevated class="MainLayout-header">
         <q-toolbar class="glossy MainLayout-header__toolbar">
-          <q-btn flat round dense icon="menu" class="q-mr-sm MainLayout-header__button" />
+          <q-btn flat round dense icon="home" class="q-mr-sm MainLayout-header__button" />
           <q-toolbar-title class="MainLayout-header__title">Личный кабинет</q-toolbar-title>
         </q-toolbar>
       </q-header>
