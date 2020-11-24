@@ -1,45 +1,45 @@
 <template>
   <div class="personalOffice">
+
     <div class="personal-info__wrap">
     <div class="personal-info__block">
       <div class="personal-info__image personal-info__tooltip-wrapper">
         <img class="personal-info__image_contact" src="../assets/contat.png" />
         <q-btn
-          class="buttonPlus"
+          class="tooltip-wrapper__button-img"
           fab
           dark
-          color="indigo"
           @click="onEditImgClickedOne()"
         >
           <q-icon dark class="buttonImgEdit">
             +
           </q-icon>
         </q-btn>
-        <tooltip class="personal-info__tooltip" :title="title"
-        >
+        <tooltip class="personal-info__tooltip" :title="title">
+          :after
         </tooltip>
       </div>
       <div class="personal-info__contacts">
-        <div id="name">
-          <strong>{{name}}</strong>
-          <div class="personal-contact__editButton">
+        <div  class="personal-info__personal-information">
+          <strong class="personal-information__name"  >{{name}}</strong>
+          <img class="personal information__edit-icon" src="../assets/edit.png" />
+          <div class="personal-information__editButton">
             <q-btn
-            class="personal-contact__buttonEdit"
+            class="personal-information__buttonEdit"
             fab
             dark
-            color="indigo"
             @click="onEditImgClickedTwo()">
             </q-btn>
           </div>
         </div>
-        <div id="numberPhone">
+        <div class="personal-information__number">
           <span>{{number}}</span>
         </div>
-        <div id="password">
-        <button
-          class="personal-password__button"
-          @click="onEditPasswordSelect()">
-          <p>изменить пароль</p>
+        <div class="personal-information__personal-password">
+          <button
+            class="personal-password__edit"
+           @click="onEditPasswordSelect()">
+           <p>изменить пароль</p>
         </button>
       </div>
       </div>
@@ -66,7 +66,7 @@
               </select>
             </div>
           <div>
-            <q-btn id="personal-birthday-button" color="deep-orange" @click="onSaveButtonClick()" glossy
+            <q-btn class="personal-birthday-button" color="deep-orange" @click="onSaveButtonClick()" glossy
              label="Coхранить" />
           </div>
         </div>
@@ -77,17 +77,7 @@
     </div>
     <div class="personal-info__bonus">
       <progress-bar :bonuses="bonuses" :current-price="currentPrice"></progress-bar>
-      <strong class="personal-bonus__titleOne">Текущий уровень кашбэка: 5% (дуйстувует до 20.12.2020)
-      </strong>
-      <p
-        class="personal-bonus__titleTwo"
-        style="padding-top: 25px">Уровень кэшбэка действует с момента получение и до конца следующего месеца.
-        Например,вы получили новий
-        уровень 10 апреля-он будет действовать до конца мая. При сумме заказов за месяц от 4500 рублей, вы получаете
-        максимальный кашбек - 10%
-      </p>
     </div>
-
   </div>
 </template>
 
@@ -154,11 +144,11 @@ export default {
           value: 12
         }
       ],
-      selected: '5',
+      selected: '',
       selectNumber: 0,
       name: '',
       number: '',
-      title: 'По какой-то причине вам будет полезно загрузить фото',
+      title: 'По какой-то там причине вам будет полезно загрузить свое фото в профиль',
       currentPrice: 2340,
       bonuses: [
         {

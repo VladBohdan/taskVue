@@ -12,19 +12,41 @@
         <q-toolbar class="glossy MainLayout-footer__toolbar">
           <q-toolbar-title class="glossy MainLayout-footer__titleToolbar">
             <div class="info glossy MainLayout-footer__info">
-              <img class="MainLayout-info__iconOne" src="../assets/decision-main.png" height="55" width="60"/>
-              <p class="MainLayout-info__titleOne">© 2018 Супердоставка</p>
-              <p class="MainLayout-info__titleTwo">Програмный комплекс для служб доставки</p>
-              <p class="MainLayout-info__titleThree">+7 (960) 555-72-72</p>
-              <p class="MainLayout-info__titleFour">info@superdostavka.net</p>
-              <p class="MainLayout-info__titleFive">Принимаем оплату картами и электронными деньгами</p>
-              <img class="MainLayout-info__iconTwo" src="../assets/vk.png" height="55" width="90"/>
-              <a class="MainLayout-info__linkOne" href="https://vk.com/superdostavka" >vk.com/superdostavka</a>
-              <img class="MainLayout-info__iconThree" src="../assets/instagram.jpg" height="55" width="115"/>
-              <a class="MainLayout-info__linkTwo" href="https://www.instagram.com/superdostavka">@superdostavka</a>
-              <img class="MainLayout-info__iconFour" src="../assets/decision-main.png" height="55" width="60" alt=""/>
-              <p class="MainLayout-info__titleSix">работает на системе</p>
-              <a class="MainLayout-info__linkThree" href="https://superdostavka.net/">супердоставка</a>
+              <div class="MainLayout-footer__contact-info">
+                <div class="contact-info">
+                  <img class="contact-info__icon-logo" src="../assets/decision-main.png"/>
+                  <div class="constant-info__title">
+                    <bold class="title__title-name">© 2018 Супердоставка</bold>
+                    <p class="title__title-info">Програмный комплекс для служб доставки</p>
+                  </div>
+                </div>
+                <div class="MainLayout-footer__contact-information">
+                  <p class="contact-information__title-number">+7 (960) 555-72-72</p>
+                  <p class="contact-information__title-mail">info@superdostavka.net</p>
+                </div>
+              </div>
+              <div class="MainLayout-footer__info-social">
+                <div class="info-social__cashless-payment">
+                  <img class="cashless-payment__icon" src="../assets/bank-cards--v1.png" />
+                  <p class="cashless-payment__title" style="color: #1D1D1D !important;">Принимаем оплату картами и электронными
+                    деньгами</p>
+                </div>
+                <div class="MainLayout-footer__info-social-link">
+                  <img class="info-social-link__iconVk" src="../assets/vk.png"/>
+                  <a class="info-social-link__linkVk" href="https://vk.com/superdostavka" >vk.com/superdostavka</a>
+                  <img class="info-social-link__iconInstagram" src="../assets/instagram.png"/>
+                  <a class="info-social-link__Instagram" href="https://www.instagram.com/superdostavka">@superdostavka</a>
+                </div>
+              </div>
+              <div class="MainLayout-footer__info-superdostavka">
+                <div class="info-superdostavka__work-info">
+                  <img class="work-info__iconFour" src="../assets/decision-main.png"  alt=""/>
+                  <div class="work-info__title">
+                    <p class="title__work">работает на системе</p>
+                    <a class="title__link" href="https://superdostavka.net/">супердоставка</a>
+                  </div>
+                </div>
+              </div>
             </div>
                </q-toolbar-title>
         </q-toolbar>
