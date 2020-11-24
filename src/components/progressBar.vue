@@ -9,25 +9,29 @@
     </div>
     <div class="progress-bar__line-wrapper">
       <div class="progress-bar__line-gray"></div>
-      <div class="progress-bar__line-yellow" v-bind:style="{width:percentage+'%'}">{{percentage}}</div>
+      <div class="progress-bar__line-yellow" v-bind:style="{width:percentage+'%'}"></div>
       <div class="progress-bar__line-block"
         v-for="point in points"
         v-bind:key="point.price"
         :style="{left: point.width + '%'}">
         <div class="progress-bar__info">
-          {{point.price+'₽'}}
-          {{point.percentage+'%'}}
+          <span>
+            {{point.price+'₽'}}
+          </span>
+          <span>
+            {{point.percentage+'%'}}
+          </span>
         </div>
         <span class="progress-bar__line-point" :class="{active: point.completed}" ></span>
       </div>
-    </div>
-    <div class="progress-bar__bonus-info">
-      <img class="bonus-info__title_img" src="../assets/vector.png" />
-      <b class="bonus-info__price" >Сума заказов в Июне {{price}} ₽</b>
+      <div class="progress-bar__bonus-info" v-bind:style="{left:percentage+'%'}">
+        <img class="bonus-info__title_img" src="../assets/vector.png" />
+        <b class="bonus-info__price" >Сума заказов в Июне {{price}} ₽</b>
       </div>
+    </div>
     <div class="progress-bar__personal-bonus">
       <strong class="personal-bonus__lvl-cashback">
-        Текущий уровень кашбэка: {{percentage+'%'}} (дейстувует до 20.12.2020)
+        Текущий уровень кашбэка: {{ currentBonus + '%' }} (дейстувует до 20.12.2020)
       </strong>
       <p
         class="personal-bonus__rules">
@@ -48,11 +52,11 @@ export default {
     bonuses: Array // {price:number,percentage:number}
   },
   data () {
-    console.log(this.getMaxBonus(this.bonuses))
     return {
       price: this.currentPrice,
       points: this.mapPoints(this.bonuses, this.currentPrice),
-      percentage: this.currentPrice / this.getMaxBonus(this.bonuses) * 100
+      percentage: this.currentPrice / this.getMaxBonus(this.bonuses) * 100,
+      currentBonus: Math.max(...this.bonuses.filter(b => b.price < this.currentPrice).map(b => b.percentage))
     }
   },
   methods: {

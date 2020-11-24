@@ -43,10 +43,8 @@ $container-width: 1200px;
 // end general mixins
 .personalOffice {
   width: 100%;
-  margin-top: $header-height;
   max-width: $container-width;
-  margin-right: auto;
-  margin-left: auto;
+  margin: $header-height auto 0;
 
 
   .personal-info__wrap {
@@ -102,9 +100,10 @@ $container-width: 1200px;
       content: '';
       position: absolute; /* Абсолютное позиционирование */
       left: 20px;
-      bottom: -20px; /* Положение треугольника */
+      bottom: 60px; /* Положение треугольника */
       border: 10px solid transparent; /* Прозрачные границы */
       border-top: 10px solid white; /* Добавляем треугольник */
+      transform: rotateZ(180deg);
     }
 
     &-wrapper {
@@ -246,7 +245,7 @@ $container-width: 1200px;
 
 .personal-select__months {
   -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
+  outline: none;
   letter-spacing: normal;
   word-spacing: normal;
   text-transform: none;
@@ -269,8 +268,8 @@ $container-width: 1200px;
 }
 
 .selectNumber-select {
+  outline: none;
   -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
   letter-spacing: normal;
   word-spacing: normal;
   text-transform: none;
@@ -303,7 +302,6 @@ $container-width: 1200px;
 }
 
 .progressBar {
-  padding-left: 10px;
 
   .progressBar-progress {
     width: 100%;
@@ -373,9 +371,9 @@ $container-width: 1200px;
 
 .progress-bar__line {
 
-
   &-wrapper {
     position: relative;
+    margin: 40px 0 130px;
   }
 
   &-point {
@@ -420,7 +418,8 @@ $container-width: 1200px;
   @include align-items(center);
   flex-direction: column;
   height: 40px;
-  margin-left: -80px;
+  min-width: 40px;
+  margin: 0 0 10px -10px;
 }
 
 .bonus-info-sum_img {
@@ -439,7 +438,14 @@ $container-width: 1200px;
 .progress-bar__bonus-info {
   @include flexbox();
   @include align-items(center);
-  padding-left: 630px;
+  position: absolute;
+  bottom: -70px;
+}
+
+.bonus-info__title_img {
+  transform: rotateZ(45deg);
+  margin-left: -10px;
+  padding-right: 10px;
 }
 
 footer {
@@ -463,6 +469,11 @@ footer {
   padding-top: $header-height;
   @include flexbox();
   @include justify-content(space-between);
+  background: #fff;
+
+  &__toolbar {
+    margin: 0 auto;
+  }
 
   p {
     font-size: 60%;
@@ -500,6 +511,7 @@ footer {
   font-size: 90%;
   color: #1D1D1D;
   cursor: pointer;
+  min-width: 300px;
 }
 
 .contact-info__title-info {
@@ -519,16 +531,15 @@ footer {
 .MainLayout-footer__contact-information {
   @include flexbox();
   @include align-items(center);
-  padding-right: 100px;
+  padding-right: 80px;
   flex-direction: column;
-  margin-right: -150px;
   margin-top: -10px;
 }
 
 .MainLayout-footer__info-social {
   @include flexbox();
   @include align-items(center);
-  padding-right: 100px;
+  margin-left: -150px;
   flex-direction: column;
   margin-top: 15px;
 }
@@ -536,7 +547,6 @@ footer {
 .cashless-payment__title {
   max-width: 170px;
 }
-
 
 .info-social__cashless-payment {
   @include flexbox();
@@ -555,6 +565,7 @@ footer {
   width: 170px;
   padding-left: 10px;
   color: #1D1D1D;
+  margin-right: 130px;
 }
 
 .MainLayout-footer__info-social-link {
@@ -588,6 +599,7 @@ footer {
 .personal-birthday-button {
   width: 200px;
   height: 40px;
+  font-size: 110%;
 }
 
 .info-social-link__Instagram {
@@ -603,9 +615,11 @@ footer {
 
 }
 
-.MainLayout-footer__info-superdostavka {
-
-}
+/*.MainLayout-footer__info-superdostavka {
+  @include flexbox();
+  @include align-items(center);
+  width: 100%;
+}*/
 
 .work-info__iconFour {
   height: 55px;
@@ -630,8 +644,6 @@ footer {
   margin-top: -20px;
 }
 
-
-// need re-dev
-.glossy {
-  background: #EF6839 !important;
+.MainLayout-header__toolbar {
+  margin: 0 auto;
 }

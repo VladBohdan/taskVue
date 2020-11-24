@@ -2,16 +2,16 @@
   <div class="q-pa-md MainLayout">
     <q-layout view="lHh lpr lFf" class="shadow-2 rounded-borders MainLayout-info__layout">
       <q-header elevated class="MainLayout-header">
-        <q-toolbar class="glossy MainLayout-header__toolbar">
+        <q-toolbar class=" MainLayout-header__toolbar personalOffice">
           <q-btn flat round dense icon="home" class="q-mr-sm MainLayout-header__button" />
           <q-toolbar-title class="MainLayout-header__title">Личный кабинет</q-toolbar-title>
         </q-toolbar>
       </q-header>
       <router-view></router-view>
       <q-footer elevated class="MainLayout-footer">
-        <q-toolbar class="glossy MainLayout-footer__toolbar">
-          <q-toolbar-title class="glossy MainLayout-footer__titleToolbar">
-            <div class="info glossy MainLayout-footer__info">
+        <q-toolbar class="MainLayout-footer__toolbar personalOffice">
+          <q-toolbar-title class="MainLayout-footer__titleToolbar">
+            <div class="info MainLayout-footer__info">
               <div class="MainLayout-footer__contact-info">
                 <div class="contact-info">
                   <img class="contact-info__icon-logo" src="../assets/decision-main.png"/>
